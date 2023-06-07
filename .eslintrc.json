@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true, //wihtout it , process gives undefined in index.js
+    "es2021": true,
+    "jest": true //errors in the testing for logger and validator apeare without it
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {}
+}
