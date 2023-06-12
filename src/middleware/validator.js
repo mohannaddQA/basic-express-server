@@ -1,9 +1,9 @@
 module.exports = (req, res, next) => {
-  const name = req.query.name;
+  const Name = req.query.name;
 
-  if (name) {
+  if (Name && !Number.parseInt(Name)) {
     next();
   } else {
-    next("please provide any name");
+    next("please provide a correct name");
   }
 };

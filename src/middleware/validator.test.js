@@ -13,7 +13,17 @@ describe("Validator Middleware", () => {
 
     expect(next).toHaveBeenCalled();
   });
+  test("should call next() with error message if name in the query is not correct", () => {
+    const req = mockRequest({
+      query: { name: "333" },
+    });
+    const res = mockResponse();
+    const next = jest.fn();
 
+    validator(req, res, next);
+
+    expect(next).toHaveBeenCalledWith("please provide a correct name");
+  });
   test("should call next() with error message if name is not present in the query string", () => {
     const req = mockRequest({
       query: {},
@@ -23,6 +33,6 @@ describe("Validator Middleware", () => {
 
     validator(req, res, next);
 
-    expect(next).toHaveBeenCalledWith("please provide any name");
+    expect(next).toHaveBeenCalledWith("please provide a correct name");
   });
 });
